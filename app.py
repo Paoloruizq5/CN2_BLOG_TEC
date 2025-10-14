@@ -11,7 +11,7 @@ app = Flask(__name__)
 # Ruta raíz
 @app.route('/')
 def index():
-    return 'Hola Mundo, es una prueba'
+    return 'Hola Mundo, es una prueba con contenedores nuevos'
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
