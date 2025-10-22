@@ -4,16 +4,45 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    </head>
-  <body >
+
+    <!-- Fuente moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Ícono del sitio (favicon) -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3059/3059990.png" type="image/png">
+
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+      header .title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      header .title img {
+        width: 70px;
+        height: 70px;
+      }
+    </style>
+  </head>
+
+  <body>
     <header>
-        <br>
-        <h1 class="title has-text-centered is-1">Blog de Noticias <Wbr>WEBHOOK</Wbr></h1>
-        <hr>
+      <br>
+      <h1 class="title has-text-centered is-1">
+        <img src="https://cdn-icons-png.flaticon.com/512/3059/3059990.png" alt="Noticias Icon">
+        Blog de Noticias <wbr>WEBHOOK</wbr>
+      </h1>
+      <hr>
     </header>
+
     <div class="container">
-        {% block content %}{% endblock %}
+      {% block content %}{% endblock %}
     </div>
   </body>
 </html>
