@@ -18,10 +18,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create and push tag
+      - name: Create and push sanitized tag
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
         run: |
-          TAG_NAME="${{ github.event.pull_request.title }}"
+          # Sanitizar el nombre del tag (reemplaza espacios y caracteres no válidos)
+          RAW_TAG="${{ github.event.pull_request.title }}"
+          TAG_NAME=$(echo "$RAW_TAG" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -cd 'a-z0-9._-')
+
+          echo "✅ Tag generado: $TAG_NAME"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
           git tag "$TAG_NAME"
           git push origin "$TAG_NAME"
